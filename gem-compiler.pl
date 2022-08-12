@@ -5,14 +5,12 @@ package gem_compiler;
 use strict;
 use warnings;
 
-#TODO: Auto use NASM to compile.
-
 print "Iterkocze Gem Compiler 0.0.0.00....00.00000.18\n";
 
 my $file = $ARGV[0] or die "You have to provide the source code file.";
 open my $info, $file or die "Could not open $file: $!";
 
-#my $feet = substr($ARGV[0], -4) = "";
+#my $feet
 
 my $OUTFILE = substr($ARGV[0], -4) = "";
 $OUTFILE .= ".asm";

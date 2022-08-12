@@ -1,0 +1,4 @@
+(executable
+ (public_name chest)
+ (name main)
+ (libraries chest))
