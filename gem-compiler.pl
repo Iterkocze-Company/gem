@@ -1,14 +1,21 @@
+#!/usr/bin/perl
+
 package gem_compiler;
 
 use strict;
 use warnings;
 
-print "Iterkocze Gem Compiler 0.0.0.00....00.00000.14\n";
+#TODO: Auto use NASM to compile.
 
-my $file = 'main.gem';
+print "Iterkocze Gem Compiler 0.0.0.00....00.00000.18\n";
+
+my $file = $ARGV[0] or die "You have to provide the source code file.";
 open my $info, $file or die "Could not open $file: $!";
 
-my $OUTFILE = 'assembly.asm';
+#my $feet = substr($ARGV[0], -4) = "";
+
+my $OUTFILE = substr($ARGV[0], -4) = "";
+$OUTFILE .= ".asm";
 my $output_string = "";
 
 $output_string .= "
@@ -62,3 +69,6 @@ close $info2;
 open(FH, '>', $OUTFILE) or die $!;
 print FH $output_string;
 
+system("nasm", "-f elf64", $OUTFILE, "-o out.o");
+system("ld", "out.o", "-o", "program");
+system("rm", "out.o");
